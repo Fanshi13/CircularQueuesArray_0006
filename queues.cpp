@@ -4,7 +4,7 @@ using namespace std;
 class Queues
 {
     int FRONT, REAR, max = 5;
-    int queues_array[5];
+    int queue_array[5];
 
 public:
     Queues()
@@ -12,7 +12,6 @@ public:
         FRONT = -1;
         REAR = -1;
     }
-
     void insert()
     {
         int num;
@@ -20,20 +19,25 @@ public:
         cin >> num;
         cout << endl;
 
-        insert()
+        if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
         {
-            if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
-                cout << "\nQueue overflow\n";
+            cout << "\nQueue overflow\n";
             return;
         }
 
         if (FRONT == -1)
         {
-            FRONT = 0;
-            REAR = 0;
-            else REAR = REAR + 1;
+            FRONT == 0;
+            REAR == 0;
         }
-        queues_array[REAR] = num;
+        else
+        {
+            if (REAR == max - 1)
+                REAR = 0;
+            else
+                REAR = REAR + 1;
+        }
+        queue_array[REAR] = num;
     }
 
     void remove()
@@ -43,5 +47,17 @@ public:
             cout << "Queue underflow\n";
             return;
         }
+        cout << "\nElement terhapus: " << queue_array[FRONT] << "\n";
+
+        if (FRONT == REAR)
+        {
+            FRONT = -1;
+            REAR = -1;
+        }
+        else
+        {
+            if (FRONT == max - 1)
+                FRONT = 0;
+        }
     }
-}
+};
